@@ -1,8 +1,10 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"
-], function(Controller, Filter, FilterOperator) {
+	"sap/ui/model/FilterOperator",
+	"./Example.controller",
+	"sap/ui/core/Fragment"
+], function(Controller, Filter, FilterOperator, ExampleController, Fragment) {
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.todo.controller.App", {
@@ -10,6 +12,13 @@ sap.ui.define([
 		onInit: function() {
 			this.aSearchFilters = [];
 			this.aTabFilters = [];
+
+			this.getView().getModel().setProperty("/myFragment", "sap.ui.demo.todo.fragment.Example");
+
+			Fragment.load({name: "sap.ui.demo.todo.fragment.Example", controller: ExampleController})
+				.then(function(oFragment) {
+					this.getView().byId("myPage").addContent(oFragment);
+				}.bind(this));
 		},
 
 		/**

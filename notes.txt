@@ -1,0 +1,14 @@
+Fragment:
+- example of component definition in fragment (ugly)
+- do not alter the assumption of the developer => no auto injected controller, but provide option to set controller explicitly
+
+Settings:
+- name/id the custom elements!
+- thumb rule: ability to address an element in the model uniquely (compare with line item index issue)
+
+TemplateModel:
+- merge custom & existing already in model
+- use templating only for dynamic content, e.g. fragment name
+
+General:
+- use JSON references while creating the model and resolve them before usage
